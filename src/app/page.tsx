@@ -5,7 +5,7 @@ import Header from "@/components/app.header";
 import All from "@/components/app.allvd";
 export default function Home() {
   return (<>
-    <Header></Header>
+   
     <All></All>
     </>
   );
