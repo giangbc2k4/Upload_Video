@@ -54,6 +54,7 @@ const Hearder = ()=>{
     <>
       <Nav.Link className="ms-2 text-muted">Xin chào, {user.email}</Nav.Link>
       <Nav.Link href='/Updata'>Tải lên vd của bạn</Nav.Link>
+      <Nav.Link href='/admin'>Xem tất cả vd của bạn</Nav.Link>
       <Nav.Link onClick={handleLogout}>Đăng Xuất</Nav.Link>
     </>
   ) : (
