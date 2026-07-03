@@ -1,18 +1,18 @@
 # Upload_Video
 
-Next.js video upload/viewing web app with Firebase authentication and Firestore integration.
+Website Next.js để đăng tải và xem video, tích hợp Firebase Authentication và Firestore.
 
-## Features
+## Tính năng
 
-- Login and signup pages.
-- Video upload page.
-- Admin page.
-- Video detail page by `videoId`.
-- Firebase Auth integration.
-- Firestore helper module.
-- Bootstrap-based UI components.
+- Trang đăng nhập và đăng ký.
+- Trang upload video.
+- Trang quản trị.
+- Trang chi tiết theo `videoId`.
+- Tích hợp Firebase Auth.
+- Module hỗ trợ Firestore.
+- Component giao diện dựa trên Bootstrap.
 
-## Tech Stack
+## Công nghệ
 
 - Next.js 15
 - React 19
@@ -22,7 +22,7 @@ Next.js video upload/viewing web app with Firebase authentication and Firestore 
 - Firebase Auth
 - Firestore
 
-## Project Structure
+## Cấu trúc dự án
 
 ```text
 src/app/Login/             Login page
@@ -34,18 +34,18 @@ src/app/sv/                Firebase service modules
 src/components/            Shared UI components
 ```
 
-## Getting Started
+## Cài đặt và chạy
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Mở `http://localhost:3000`.
 
-## Environment Variables
+## Biến môi trường
 
-Create `.env.local` and add your Firebase web app configuration:
+Tạo `.env.local` và thêm cấu hình Firebase Web App:
 
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=
@@ -56,7 +56,7 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
 ```
 
-## Scripts
+## Lệnh npm
 
 ```bash
 npm run dev
@@ -65,22 +65,22 @@ npm run start
 npm run lint
 ```
 
-## Roadmap
+## Hướng phát triển
 
-- Rename `Updata` route to `Upload`.
-- Add screenshots and a demo video.
-- Document where uploaded video files are stored.
-- Add Firestore rules documentation.
+- Đổi route `Updata` thành `Upload`.
+- Bổ sung ảnh màn hình và video demo.
+- Tài liệu hóa nơi lưu file video.
+- Bổ sung tài liệu Firestore Rules.
 
-## Current flow and known setup issue
+## Luồng hiện tại và lỗi cấu hình đã biết
 
 Login/Signup use Firebase Auth helpers; `Updata` collects upload data; admin lists/manages entries; `youtube/[videoId]` renders a detail route. Firebase modules live under `src/app/sv/`. The source imports Firebase, but `package.json` currently does not list `firebase`; install it with `npm install firebase` and commit the updated lockfile.
 
-## Video storage design
+## Thiết kế lưu trữ video
 
-Use Firestore for metadata only (title, description, owner UID, URL and timestamps). Store large files in Firebase Storage or another object store, then write the resulting URL to Firestore. Define file type/size limits, upload progress, cancellation and cleanup when metadata creation fails.
+Chỉ dùng Firestore cho metadata (tiêu đề, mô tả, owner UID, URL và thời gian). Lưu file lớn trong Firebase Storage hoặc object storage khác, sau đó ghi URL vào Firestore. Cần quy định loại/kích thước file, tiến trình upload, hủy tác vụ và dọn file khi tạo metadata thất bại.
 
-## Authorization
+## Phân quyền
 
 Only authenticated users should create records; only the owner or a server-verified admin should modify/delete them. Hiding the Admin link in React is not security—enforce ownership/custom claims in Firestore and Storage Rules. Test direct access to admin, missing IDs, interrupted uploads and cross-user updates before deploy.
 
