@@ -71,3 +71,17 @@ npm run lint
 - Add screenshots and a demo video.
 - Document where uploaded video files are stored.
 - Add Firestore rules documentation.
+
+## Current flow and known setup issue
+
+Login/Signup use Firebase Auth helpers; `Updata` collects upload data; admin lists/manages entries; `youtube/[videoId]` renders a detail route. Firebase modules live under `src/app/sv/`. The source imports Firebase, but `package.json` currently does not list `firebase`; install it with `npm install firebase` and commit the updated lockfile.
+
+## Video storage design
+
+Use Firestore for metadata only (title, description, owner UID, URL and timestamps). Store large files in Firebase Storage or another object store, then write the resulting URL to Firestore. Define file type/size limits, upload progress, cancellation and cleanup when metadata creation fails.
+
+## Authorization
+
+Only authenticated users should create records; only the owner or a server-verified admin should modify/delete them. Hiding the Admin link in React is not security—enforce ownership/custom claims in Firestore and Storage Rules. Test direct access to admin, missing IDs, interrupted uploads and cross-user updates before deploy.
+
+`Updata` appears to be a typo; if renamed to `Upload`, update all links. Also verify the lint script against the installed Next.js version and run a production build.
